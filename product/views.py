@@ -1,0 +1,17 @@
+from django.shortcuts import render
+from product.models import Product
+
+def  product_list(request):
+    products = Product.objects.all()
+    context = {
+        'products':products
+    }
+    return render(request,'product_list.html',context=context)
+
+def  product_detail(request,product_id):
+    products = Product.objects.get(id=product_id)
+    context = {
+        'products': products
+    }
+    return render(request,'product_detail.html',context=context)
+
